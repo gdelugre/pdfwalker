@@ -212,7 +212,13 @@ module PDFWalker
             field_menu = Menu.new
             @document_menu_gotofield.remove_submenu
             @opened.each_field do |field|
-                field_name = field.T || "<unnamed field>"
+                field_name =
+                    if field.T.is_a?(Origami::String)
+                        field.T.to_utf8
+                    else
+                        "<unnamed field>"
+                    end
+
                 field_menu.append(item = MenuItem.new(field_name).show)
                 item.signal_connect("activate") { @treeview.goto(field) }
             end
