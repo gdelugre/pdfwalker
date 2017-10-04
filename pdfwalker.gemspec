@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
 
     s.add_runtime_dependency "gtk2", "~> 3.1"
     s.add_runtime_dependency "ruby-gtkhex", "~> 0.2"
-    s.add_runtime_dependency "origami", "~> 2.0"
+    s.add_runtime_dependency "origami", "~> 2.1"
 end
