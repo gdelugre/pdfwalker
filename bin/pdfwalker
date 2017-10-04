@@ -1,5 +1,30 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
 require 'pdfwalker'
+
+OptionParser.new do |opts|
+    opts.banner = <<-BANNER
+Usage: #{$0} [options] [PDF FILE]
+PDFWalker is a frontend for exploring PDF objects, based on Origami.
+
+Options:
+    BANNER
+
+    opts.on("-v", "--version", "Print version number.") do
+        puts PDFWalker::VERSION
+        exit
+    end
+
+    opts.on_tail("-h", "--help", "Show this message.") do
+        puts opts
+        exit
+    end
+end
+            .parse!(ARGV)
+
+if ARGV.size > 1
+    abort "Error: too many arguments."
+end
 
 PDFWalker::Walker.start(ARGV[0])
