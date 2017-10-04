@@ -60,7 +60,7 @@ module PDFWalker
 
             reset_appearance
 
-            @treestore = TreeStore.new(Object::Object, String, Pango::Weight, Pango::Style, String, String, Fixnum)
+            @treestore = TreeStore.new(Object::Object, String, Pango::Weight, Pango::Style, String, String, Integer)
             super(@treestore)
 
             signal_connect('cursor-changed') {
